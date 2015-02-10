@@ -1,0 +1,12 @@
+#ifndef ESSMODEL_GLOBAL_H
+#define ESSMODEL_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(ESSMODEL_LIBRARY)
+#  define ESSMODELSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define ESSMODELSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // ESSMODEL_GLOBAL_H
