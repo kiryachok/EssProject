@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 
+#include "essview_global.h"
+
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class ESSVIEWSHARED_EXPORT MainWindow : public QMainWindow
 {
     Q_OBJECT
 
