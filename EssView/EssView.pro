@@ -13,11 +13,17 @@ TEMPLATE = lib
 DEFINES += ESSVIEW_LIBRARY
 
 SOURCES += essview.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    changemoddialog.cpp \
+    newmoddialog.cpp \
+    prmoddialog.cpp
 
 HEADERS += essview.h\
         essview_global.h \
-    mainwindow.h
+    mainwindow.h \
+    changemoddialog.h \
+    newmoddialog.h \
+    prmoddialog.h
 
 unix {
     target.path = /usr/lib
@@ -25,7 +31,10 @@ unix {
 }
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    changemoddialog.ui \
+    newmoddialog.ui \
+    prmoddialog.ui
 
 CONFIG(debug, debug|release): {
     OUTPUT_DIR = "$$PWD/../../buildEss/debug"
