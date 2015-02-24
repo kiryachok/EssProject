@@ -1,7 +1,9 @@
 *.lib
 *.so
 *.o
+*.orig
 Makefile.*
 Makefile
-Ess.pro.user
-EssView.pro.user
+*.user
+# Ess.pro.user
+# EssView.pro.user
