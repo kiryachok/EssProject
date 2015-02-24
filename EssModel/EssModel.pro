@@ -9,12 +9,19 @@ QT       -= gui
 TARGET = EssModel
 TEMPLATE = lib
 
-DEFINES += ESSMODEL_LIBRARY
+DEFINES += ESSMODEL_LIBRARY \
+    _LINUX
 
-SOURCES += essmodel.cpp
+SOURCES += essmodel.cpp \
+    project.cpp \
+    Objects.cpp \
+    Archive.cpp
 
 HEADERS += essmodel.h\
-        essmodel_global.h
+        essmodel_global.h \
+    project.h \
+    objects.h \
+    archive.h
 
 unix {
     target.path = /usr/lib
