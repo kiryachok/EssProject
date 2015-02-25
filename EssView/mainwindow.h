@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "attrwindow.h"
+#include "newattrwindow.h"
 
 #include "essview_global.h"
 
@@ -19,6 +21,8 @@ public:
 
 private slots:
     void on_action_modules_triggered();
+
+    void on_action_attributes_triggered();
 
 private:
     Ui::MainWindow *ui;

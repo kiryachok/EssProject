@@ -16,14 +16,18 @@ SOURCES += essview.cpp \
     mainwindow.cpp \
     changemoddialog.cpp \
     newmoddialog.cpp \
-    prmoddialog.cpp
+    prmoddialog.cpp \
+    attrwindow.cpp \
+    newattrwindow.cpp
 
 HEADERS += essview.h\
         essview_global.h \
     mainwindow.h \
     changemoddialog.h \
     newmoddialog.h \
-    prmoddialog.h
+    prmoddialog.h \
+    attrwindow.h \
+    newattrwindow.h
 
 unix {
     target.path = /usr/lib
@@ -34,7 +38,9 @@ FORMS += \
     mainwindow.ui \
     changemoddialog.ui \
     newmoddialog.ui \
-    prmoddialog.ui
+    prmoddialog.ui \
+    attrwindow.ui \
+    newattrwindow.ui
 
 CONFIG(debug, debug|release): {
     OUTPUT_DIR = "$$PWD/../../buildEss/debug"
@@ -47,3 +53,4 @@ MOC_DIR     = "$$OUTPUT_DIR/moc/"
 RCC_DIR     = "$$OUTPUT_DIR/res/"
 DESTDIR     = "$$OUTPUT_DIR/bin/"
 OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
+

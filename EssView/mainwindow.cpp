@@ -25,3 +25,9 @@ void MainWindow::on_action_modules_triggered()
     PrMod->setModal(true);
     PrMod->exec();
 }
+
+void MainWindow::on_action_attributes_triggered()
+{
+    AttrWindow* window = new AttrWindow(this);
+    window->show();
+}

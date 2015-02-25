@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewAttrWindow</class>
+ <widget class="QDialog" name="NewAttrWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="labelFullName">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>65</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Full name</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditFullName">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>261</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLineEdit" name="lineEditShortName">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>261</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelShortName">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Short name</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_6">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="labelType">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>65</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxType">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>121</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Logical</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Numeric</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>String</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="labelValue">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>65</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Value</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditValue">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>261</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="pushButtonOk">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>10</y>
+        <width>96</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ok</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonCancel">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>96</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEditFullName</tabstop>
+  <tabstop>lineEditShortName</tabstop>
+  <tabstop>comboBoxType</tabstop>
+  <tabstop>lineEditValue</tabstop>
+  <tabstop>pushButtonOk</tabstop>
+  <tabstop>pushButtonCancel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

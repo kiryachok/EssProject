@@ -29,3 +29,4 @@ OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
 INCLUDEPATH += "../EssView/"
 
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssView
+LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel

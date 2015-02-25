@@ -7,6 +7,10 @@
 #include <utility>
 #include <stack>
 #include "archive.h"
+#include <QtGlobal>
+#include <QString>
+#include <QFile>
+#include <stdio.h>
 
 using namespace std;
 
@@ -48,8 +52,17 @@ public:
   string m_StrValue;   // For string value
   double m_Value;       // For logical or integer value
   void Serialize(CArch&);
+  void setValue(BYTE type, string value);
+  void setDefaultValue(BYTE type);
+  string getValueAsText();
+  static BYTE type(string stype);
+  QString text();
   ~CKnAttr() { }
 };
+
+CKnAttr* make_attr(QString fullName, QString shortName, QString type, QString value);
+
+CKnAttr* make_attr(QString fullName, QString shortName, QString type);
 
 ///////////////////////////////////////////////////////////// CMapAttributes
 //
@@ -71,10 +84,19 @@ public:
   inline void GetNextAssoc(string& rKey, CKnAttr*& rValue)
   {   rKey =  iA->first;   rValue = iA->second;   iA++;   }
   inline void SetAt(string key, CKnAttr* newValue)   { mpa[key] = newValue; }
+  inline void fromBeginning()
+  {   iA = mpa.begin();  }
+  inline bool hasNext()
+  {   return iA != mpa.end();  }
   
   void PrintMapAttribs(string FileName);
   void PrintFullAttribs(string FileName);
   void Serialize(CArch&);
+
+  CMapAttributes* copy();
+  void removeAt(string key);
+  void add(CKnAttr* attr);
+  void remove(CKnAttr* attr);
 };
 
 ///////////////////////////////////////////////////////////// CExpres

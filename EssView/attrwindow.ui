@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AttrWindow</class>
+ <widget class="QMainWindow" name="AttrWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>534</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AttrWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QListWidget" name="listWidgetAttributes"/>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QLabel" name="labelShortName">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>121</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Short name</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEditShortName">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>20</y>
+             <width>241</width>
+             <height>29</height>
+            </rect>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QLabel" name="labelType">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>71</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBoxType">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>0</y>
+             <width>171</width>
+             <height>25</height>
+            </rect>
+           </property>
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>Logical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Numeric</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>String</string>
+            </property>
+           </item>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QLabel" name="labelValue">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEditValue">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>20</y>
+             <width>241</width>
+             <height>29</height>
+            </rect>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QPushButton" name="buttonOk">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>0</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Ok</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonCancel">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>30</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonExport">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>100</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Export</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonNewAttribute">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>130</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>New</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonEditAttribute">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>160</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonDeleteAttribute">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>190</y>
+             <width>91</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Delete</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="buttonImport">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>60</y>
+             <width>91</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Import</string>
+           </property>
+          </widget>
+          <zorder>buttonCancel</zorder>
+          <zorder>buttonOk</zorder>
+          <zorder>buttonExport</zorder>
+          <zorder>buttonNewAttribute</zorder>
+          <zorder>buttonEditAttribute</zorder>
+          <zorder>buttonDeleteAttribute</zorder>
+          <zorder>buttonImport</zorder>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>630</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>lineEditShortName</tabstop>
+  <tabstop>comboBoxType</tabstop>
+  <tabstop>buttonOk</tabstop>
+  <tabstop>buttonCancel</tabstop>
+  <tabstop>buttonExport</tabstop>
+  <tabstop>buttonNewAttribute</tabstop>
+  <tabstop>buttonEditAttribute</tabstop>
+  <tabstop>buttonDeleteAttribute</tabstop>
+  <tabstop>listWidgetAttributes</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

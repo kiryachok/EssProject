@@ -30,7 +30,10 @@
 #pragma warning(disable : 4996)
 #endif
 #include "objects.h"
-#include "QFile"
+
+#ifdef Q_OS_UNIX
+#include <unistd.h>
+#endif
 
 using namespace std;
 void  PrintMap(map<string,string> m_pMapValFrame, string a);
@@ -159,36 +162,34 @@ void CMapAttributes::PrintMapAttribs(string FileName)
 
   try
   {
-#ifndef _LINUX
-    QFile(FileName.c_str()).remove();
-      //_unlink(FileName.c_str());
+#ifndef Q_OS_UNIX
+    _unlink(FileName.c_str());
 #else
-      QFile(FileName.c_str()).remove();
-    //unlink(FileName.c_str());
+    unlink(FileName.c_str());
 #endif
     FILE *out;
     out =fopen(FileName.c_str(),"w");
     //CFile f(FileName, CFile::modeCreate | CFile::modeWrite);
     iA=mpa.begin();
     for (; iA!=mpa.end();)  {
-      GetNextAssoc(s1, pKnAttr);
+      GetNextAssoc(key, pKnAttr);
 #ifndef _MSVC9
       sprintf(buf,"%10.2lf\n",pKnAttr->m_Value);
 #else
       sprintf_s(buf,30, "%10.2lf\n",pKnAttr->m_Value);
 #endif
 
-      s1 += (" -> " + pKnAttr->m_StrValue + " " + buf);
+      s1 = (pKnAttr->m_ShortName + " -> " + pKnAttr->m_StrValue + " " + buf);
       fwrite(s1.c_str(), s1.length(),1,out);
     }
   }
-#ifndef _LINUX
+#ifndef Q_OS_UNIX
   catch(CFileException e)
 #else
   catch( ... )
 #endif
   {
-#ifdef _LINUX
+#ifdef Q_OS_UNIX
     printf("Error at the record of file\n");
 #else
 #ifdef ENG
@@ -211,18 +212,18 @@ void CMapAttributes::PrintFullAttribs(string FileName)
   int Count=0;
   try
   {
-#ifndef _LINUX
+#ifndef Q_OS_UNIX
     _unlink(FileName.c_str());
 #else
-     QFile(FileName.c_str()).remove();
-    //unlink(FileName.c_str());
+    unlink(FileName.c_str());
 #endif
     FILE *out;
     out =fopen(FileName.c_str(),"w");
     //CFile f(FileName, CFile::modeCreate | CFile::modeWrite);
     iA=mpa.begin();
     for (; iA!=mpa.end();)  {
-      GetNextAssoc(s1, pKnAttr);
+      GetNextAssoc(key, pKnAttr);
+      s1 = pKnAttr->m_ShortName;
       if (pKnAttr->m_Type == 0) 
         s1 +="  (logical)\n   "; 
       else if (pKnAttr->m_Type == 1) 
@@ -240,13 +241,13 @@ void CMapAttributes::PrintFullAttribs(string FileName)
     for (int i=0; i<Count; i++)
       fwrite(Buf[i],strlen(Buf[i]),1,out);
   }
-#ifndef _LINUX
+#ifndef Q_OS_UNIX
   catch(CFileException e)
 #else
   catch( ... )
 #endif
   {
-#ifdef _LINUX
+#ifdef Q_OS_UNIX
     printf("Error at the record of file\n");
 #else
 #ifdef ENG
@@ -288,6 +289,125 @@ void CMapAttributes::Serialize(CArch& ar)
     }
   }
 }
+
+BYTE CKnAttr::type(string stype) {
+    std::transform(stype.begin(), stype.end(), stype.begin(), (int(*)(int))std::tolower);
+    if (stype == "logical") {
+        return 0;
+    } else if (stype == "numeric") {
+        return 1;
+    } else if (stype == "string") {
+        return 2;
+    }
+    return 255;
+}
+
+void CKnAttr::setValue(BYTE type, string value) {
+    switch (type) {
+    case 2:
+        m_StrValue = value;
+        break;
+    case 1:
+        m_Value = atof(value.c_str());
+        break;
+    case 0:
+        double val = atof(value.c_str());
+        if (val == 1.0) {
+            m_Value = 1.0;
+        } else {
+            m_Value = 0.0;
+        }
+        break;
+    }
+}
+
+void CKnAttr::setDefaultValue(BYTE type) {
+    this->m_Type = type;
+    switch (type) {
+    case 2:
+        m_StrValue = "";
+        break;
+    case 1:
+    case 0:
+        m_Value = 0;
+        break;
+    }
+}
+
+string CKnAttr::getValueAsText() {
+    if (m_Type == 2) {
+        return m_StrValue;
+    } else if (m_Type == 1){
+        char buf[20];
+        sprintf(buf, "%f", m_Value);
+        return string(buf);
+    } else if (m_Type == 0) {
+        char buf[20];
+        sprintf(buf, "%d", (int)m_Value);
+        return string(buf);
+    }
+    return string();
+}
+
+void CMapAttributes::removeAt(string key) {
+    mpa.erase(key);
+}
+
+CMapAttributes* CMapAttributes::copy() {
+    CMapAttributes* copy = new CMapAttributes;
+
+    string key;
+    CKnAttr *attr=NULL;
+
+    for (iA = mpa.begin(); iA != mpa.end();)  {
+        this->GetNextAssoc(key, attr);
+        CKnAttr* newAttr = new CKnAttr;
+        *newAttr = *attr;
+        copy->SetAt(key, newAttr);
+    }
+
+    return copy;
+}
+
+CKnAttr* make_attr(QString qFullName, QString qShortName, QString qType, QString qValue) {
+    CKnAttr* attr = make_attr(qFullName, qShortName, qType);
+    string value = qValue.toStdString();
+
+    if (attr != NULL && value.length() > 0) {
+        attr->setValue(attr->m_Type, value);
+        return attr;
+    }
+    return NULL;
+}
+
+CKnAttr* make_attr(QString qFullName, QString qShortName, QString qType) {
+    string fullName = qFullName.toStdString();
+    string shortName = qShortName.toStdString();
+    BYTE type = CKnAttr::type(qType.toStdString());
+
+    if (fullName.length() > 0 && shortName.length() > 0 && type != 255) {
+        CKnAttr* attr = new CKnAttr;
+        attr->m_FullName = fullName;
+        attr->m_ShortName = shortName;
+        attr->m_Type = type;
+        attr->setDefaultValue(type);
+        return attr;
+    }
+    return NULL;
+}
+
+void CMapAttributes::add(CKnAttr *attr) {
+    SetAt(attr->m_FullName, attr);
+}
+
+void CMapAttributes::remove(CKnAttr *attr) {
+    removeAt(attr->m_FullName);
+}
+
+QString CKnAttr::text() {
+    return QString(m_FullName.c_str());
+}
+
 
 ///////////////////////////////////////////////////////////// CExpres
 //
