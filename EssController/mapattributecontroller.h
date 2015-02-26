@@ -5,9 +5,10 @@
 #include <QFile>
 #include <QTextStream>
 #include "../EssModel/objects.h"
+#include "esscontroller_global.h"
 #include "attributecontroller.h"
 
-class MapAttributeController : public QObject
+class ESSCONTROLLERSHARED_EXPORT MapAttributeController : public QObject
 {
     Q_OBJECT
 

@@ -2,9 +2,10 @@
 #define ATTRIBUTECONTROLLER_H
 
 #include <QtGlobal>
+#include "esscontroller_global.h"
 #include "../EssModel/objects.h"
 
-class AttributeController : public QObject
+class ESSCONTROLLERSHARED_EXPORT AttributeController : public QObject
 {
     Q_OBJECT
 

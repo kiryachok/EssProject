@@ -39,7 +39,10 @@ void AttrWindow::on_buttonImport_clicked()
     QFileDialog dialog(this, caption, dir, filter);
     dialog.exec();
     ui->listWidgetAttributes->clear();
-    ctrl->loadFile(dialog.selectedFiles()[0]);
+    QStringList files = dialog.selectedFiles();
+    if (!files.empty()) {
+        ctrl->loadFile(dialog.selectedFiles()[0]);
+    }
 }
 
 void AttrWindow::on_buttonNewAttribute_clicked()
