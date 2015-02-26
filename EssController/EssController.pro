@@ -11,10 +11,14 @@ TEMPLATE = lib
 
 DEFINES += ESSCONTROLLER_LIBRARY
 
-SOURCES += esscontroller.cpp
+SOURCES += esscontroller.cpp \
+    mapattributecontroller.cpp \
+    attributecontroller.cpp
 
 HEADERS += esscontroller.h\
-        esscontroller_global.h
+        esscontroller_global.h \
+    mapattributecontroller.h \
+    attributecontroller.h
 
 unix {
     target.path = /usr/lib
@@ -33,3 +37,5 @@ MOC_DIR     = "$$OUTPUT_DIR/moc/"
 RCC_DIR     = "$$OUTPUT_DIR/res/"
 DESTDIR     = "$$OUTPUT_DIR/bin/"
 OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
+
+LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel

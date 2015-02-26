@@ -6,6 +6,7 @@
 #include "newattrwindow.h"
 
 #include "essview_global.h"
+#include "../EssController/mapattributecontroller.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    MapAttributeController attr_ctrl;
 };
 
 #endif // MAINWINDOW_H

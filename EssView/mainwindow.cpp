@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget_Products->resizeColumnsToContents();
     ui->tableWidget_Strategy->resizeColumnsToContents();
     ui->tableWidget_SlotsByFrame->resizeColumnsToContents();
+
 }
 
 MainWindow::~MainWindow()
@@ -28,6 +29,6 @@ void MainWindow::on_action_modules_triggered()
 
 void MainWindow::on_action_attributes_triggered()
 {
-    AttrWindow* window = new AttrWindow(this);
+    AttrWindow* window = new AttrWindow(&attr_ctrl, this);
     window->show();
 }

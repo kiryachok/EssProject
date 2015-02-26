@@ -6,60 +6,44 @@
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QFileDialog>
-#include <QTextStream>
 #include <QMessageBox>
 
-#include "../EssModel/objects.h"
+#include "essview_global.h"
 #include "newattrwindow.h"
-
-#include <QDebug>
+#include "../EssController/mapattributecontroller.h"
 
 namespace Ui {
 class AttrWindow;
 }
 
-class AttrWindow : public QMainWindow
+class ESSVIEWSHARED_EXPORT AttrWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    AttrWindow(QWidget *parent = 0, CMapAttributes* attributes = NULL);
-
-    void updateAttributes();
+    AttrWindow(MapAttributeController* controller, QWidget *parent = 0);
 
     ~AttrWindow();
 
-    void addAttribute(CKnAttr* newAttribute);
-    void updateAttribute(CKnAttr* attr, CKnAttr *old);
 private slots:
     void on_buttonOk_clicked();
-
-    void onItemCreated(CKnAttr* attr);
-
-    void onItemChanged(CKnAttr* old, CKnAttr* value);
-
-    void onImportFile(QString fileName);
-
-    void on_buttonNewAttribute_clicked();
-
-    void on_buttonEditAttribute_clicked();
-
-    void on_listWidgetAttributes_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
-
-    void on_buttonDeleteAttribute_clicked();
-
     void on_buttonCancel_clicked();
-
     void on_buttonImport_clicked();
 
+    void on_buttonNewAttribute_clicked();
+    void on_buttonEditAttribute_clicked();
+    void on_buttonDeleteAttribute_clicked();
 
-signals:
-    void attributesChanged(CMapAttributes* data);
+    void onAttributeCreated(AttributeController* controller);
+    void onAttributeUpdated(AttributeController* controller, QString key);
+    void onAttributeRemoved();
+
+    void on_listWidgetAttributes_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
 private:
     Ui::AttrWindow *ui;
 
-    CMapAttributes* attributes;
+    MapAttributeController* ctrl;
 };
 
 #endif // ATTRWINDOW_H

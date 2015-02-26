@@ -53,18 +53,22 @@ public:
   BYTE m_Dyn;           // 1 - dynamic, 0 - static
   string m_StrValue;   // For string value
   double m_Value;       // For logical or integer value
+
   void Serialize(CArch&);
-  void setValue(BYTE type, string value);
-  void setDefaultValue(BYTE type);
+
+  bool setFullName(string value);
+  bool setShortName(string vaue);
+  bool setType(string type);
+  bool setValue(string value);
+
+  void setDefaultValue();
+
   string getValueAsText();
+
   static BYTE type(string stype);
-  QString text();
+
   ~CKnAttr() { }
 };
-
-ESSMODELSHARED_EXPORT CKnAttr* make_attr(QString fullName, QString shortName, QString type, QString value);
-
-ESSMODELSHARED_EXPORT CKnAttr* make_attr(QString fullName, QString shortName, QString type);
 
 ///////////////////////////////////////////////////////////// CMapAttributes
 //
@@ -86,7 +90,7 @@ public:
   inline void GetNextAssoc(string& rKey, CKnAttr*& rValue)
   {   rKey =  iA->first;   rValue = iA->second;   iA++;   }
   inline void SetAt(string key, CKnAttr* newValue)   { mpa[key] = newValue; }
-  inline void fromBeginning()
+  inline void begin()
   {   iA = mpa.begin();  }
   inline bool hasNext()
   {   return iA != mpa.end();  }
@@ -99,6 +103,7 @@ public:
   void removeAt(string key);
   void add(CKnAttr* attr);
   void remove(CKnAttr* attr);
+  void update(CKnAttr* old, CKnAttr* value);
 };
 
 ///////////////////////////////////////////////////////////// CExpres

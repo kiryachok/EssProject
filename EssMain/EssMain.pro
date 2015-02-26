@@ -30,3 +30,4 @@ INCLUDEPATH += "../EssView/"
 
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssView
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel
+LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssController

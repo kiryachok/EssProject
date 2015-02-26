@@ -2,32 +2,30 @@
 #define NEWATTRWINDOW_H
 
 #include <QDialog>
-#include "../EssModel/objects.h"
+#include <QMessageBox>
+
+#include "essview_global.h"
+#include "../EssController/attributecontroller.h"
 
 namespace Ui {
 class NewAttrWindow;
 }
 
-class NewAttrWindow : public QDialog
+class ESSVIEWSHARED_EXPORT NewAttrWindow : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit NewAttrWindow(QWidget *parent = 0, CKnAttr* attr = NULL);
+    explicit NewAttrWindow(AttributeController* controller, QWidget *parent = 0);
     ~NewAttrWindow();
 
 private slots:
     void on_pushButtonCancel_clicked();
-
     void on_pushButtonOk_clicked();
-
-signals:
-    void itemCreated(CKnAttr* attr);
-    void itemChanged(CKnAttr* old, CKnAttr* attr);
 
 private:
     Ui::NewAttrWindow *ui;
-    CKnAttr* oldAttr;
+    AttributeController* ctrl;
 };
 
 #endif // NEWATTRWINDOW_H

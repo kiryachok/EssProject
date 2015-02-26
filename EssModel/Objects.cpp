@@ -274,8 +274,24 @@ void CMapAttributes::Serialize(CArch& ar)
   }
 }
 
+bool CKnAttr::setFullName(string value) {
+    if (value.length() > 0) {
+        m_FullName = value;
+        return true;
+    }
+    return false;
+}
+
+bool CKnAttr::setShortName(string value) {
+    if (value.length() > 0) {
+        m_ShortName = value;
+        return true;
+    }
+    return false;
+}
+
 BYTE CKnAttr::type(string stype) {
-    std::transform(stype.begin(), stype.end(), stype.begin(), /*(int(*)(int))std::*/tolower);
+    std::transform(stype.begin(), stype.end(), stype.begin(), (int(*)(int))std::tolower);
     if (stype == "logical") {
         return 0;
     } else if (stype == "numeric") {
@@ -286,28 +302,38 @@ BYTE CKnAttr::type(string stype) {
     return 255;
 }
 
-void CKnAttr::setValue(BYTE type, string value) {
-    switch (type) {
+bool CKnAttr::setType(string type) {
+    BYTE value = CKnAttr::type(type);
+    if (value != 255) {
+        m_Type = value;
+        return true;
+    }
+    return false;
+}
+
+bool CKnAttr::setValue(string value) {
+    switch (m_Type) {
     case 2:
         m_StrValue = value;
-        break;
+        return true;
     case 1:
         m_Value = atof(value.c_str());
-        break;
+        return true;
     case 0:
         double val = atof(value.c_str());
         if (val == 1.0) {
-            m_Value = 1.0;
-        } else {
-            m_Value = 0.0;
+            m_Value = val;
+            return true;
+        } else if (val == 0.0){
+            m_Value = val;
+            return true;
         }
-        break;
     }
+    return false;
 }
 
-void CKnAttr::setDefaultValue(BYTE type) {
-    this->m_Type = type;
-    switch (type) {
+void CKnAttr::setDefaultValue() {
+    switch (m_Type) {
     case 2:
         m_StrValue = "";
         break;
@@ -353,33 +379,6 @@ CMapAttributes* CMapAttributes::copy() {
     return copy;
 }
 
-CKnAttr* make_attr(QString qFullName, QString qShortName, QString qType, QString qValue) {
-    CKnAttr* attr = make_attr(qFullName, qShortName, qType);
-    string value = qValue.toStdString();
-
-    if (attr != NULL && value.length() > 0) {
-        attr->setValue(attr->m_Type, value);
-        return attr;
-    }
-    return NULL;
-}
-
-CKnAttr* make_attr(QString qFullName, QString qShortName, QString qType) {
-    string fullName = qFullName.toStdString();
-    string shortName = qShortName.toStdString();
-    BYTE type = CKnAttr::type(qType.toStdString());
-
-    if (fullName.length() > 0 && shortName.length() > 0 && type != 255) {
-        CKnAttr* attr = new CKnAttr;
-        attr->m_FullName = fullName;
-        attr->m_ShortName = shortName;
-        attr->m_Type = type;
-        attr->setDefaultValue(type);
-        return attr;
-    }
-    return NULL;
-}
-
 void CMapAttributes::add(CKnAttr *attr) {
     SetAt(attr->m_FullName, attr);
 }
@@ -388,8 +387,9 @@ void CMapAttributes::remove(CKnAttr *attr) {
     removeAt(attr->m_FullName);
 }
 
-QString CKnAttr::text() {
-    return QString(m_FullName.c_str());
+void CMapAttributes::update(CKnAttr *old, CKnAttr *value) {
+    remove(old);
+    add(value);
 }
 
 
