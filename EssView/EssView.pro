@@ -54,3 +54,6 @@ RCC_DIR     = "$$OUTPUT_DIR/res/"
 DESTDIR     = "$$OUTPUT_DIR/bin/"
 OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
 
+INCLUDEPATH += "../EssModel/"
+
+LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel

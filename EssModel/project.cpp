@@ -17,6 +17,8 @@ bool Project::saveFile(char* fileName)
     m_MapFrames.Serialize(*arh);
     m_MapProgModuls.Serialize(*arh);
     m_MapStrategies.Serialize(*arh);
+
+    return true;
 }
 
 bool Project::loadFile(char *fileName)
@@ -26,4 +28,6 @@ bool Project::loadFile(char *fileName)
     m_MapFrames.Serialize(*arh);
     m_MapProgModuls.Serialize(*arh);
     m_MapStrategies.Serialize(*arh);
+
+    return true;
 }

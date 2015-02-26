@@ -2,7 +2,7 @@
 #define NEWATTRWINDOW_H
 
 #include <QDialog>
-#include <../EssModel/objects.h>
+#include "../EssModel/objects.h"
 
 namespace Ui {
 class NewAttrWindow;

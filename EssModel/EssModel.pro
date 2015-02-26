@@ -12,12 +12,12 @@ TEMPLATE = lib
 DEFINES += ESSMODEL_LIBRARY \
     _LINUX
 
-SOURCES += essmodel.cpp \
+SOURCES += \
     project.cpp \
     Objects.cpp \
     Archive.cpp
 
-HEADERS += essmodel.h\
+HEADERS +=\
         essmodel_global.h \
     project.h \
     objects.h \

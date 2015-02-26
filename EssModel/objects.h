@@ -12,6 +12,8 @@
 #include <QFile>
 #include <stdio.h>
 
+#include "essmodel_global.h"
+
 using namespace std;
 
 void Seria(vector <string>& ms, CArch& ar);
@@ -38,7 +40,7 @@ void Seria(map <string, string>& ms, CArch& ar);
 // 1.      CKnAttr     - A T T R I B U T E
 //
 /////////////////////////////////////////////////////////////
-class CKnAttr
+class ESSMODELSHARED_EXPORT CKnAttr
 {  
 public:
   CKnAttr() { } // Construction
@@ -60,16 +62,16 @@ public:
   ~CKnAttr() { }
 };
 
-CKnAttr* make_attr(QString fullName, QString shortName, QString type, QString value);
+ESSMODELSHARED_EXPORT CKnAttr* make_attr(QString fullName, QString shortName, QString type, QString value);
 
-CKnAttr* make_attr(QString fullName, QString shortName, QString type);
+ESSMODELSHARED_EXPORT CKnAttr* make_attr(QString fullName, QString shortName, QString type);
 
 ///////////////////////////////////////////////////////////// CMapAttributes
 //
 // 2. CMapAttributes   - Map of A T T R I B U T I E S
 //
 /////////////////////////////////////////////////////////////
-  class CMapAttributes
+  class ESSMODELSHARED_EXPORT CMapAttributes
   {
 public:
   CMapAttributes() 
@@ -104,7 +106,7 @@ public:
 // 3.      CExpres     - E X P R E S S I O N
 //
 /////////////////////////////////////////////////////////////
-class CExpres
+class ESSMODELSHARED_EXPORT CExpres
 {
 public:
   CExpres(){ }  // Construction
@@ -121,7 +123,7 @@ public:
 // 4. CArrayExpression - Array of E X P R E S S I O N
 //
 /////////////////////////////////////////////////////////////
-class CArrayExpression
+class ESSMODELSHARED_EXPORT CArrayExpression
 {
 public:
   vector <CExpres*> ae;
@@ -141,7 +143,7 @@ public:
 // 11.      CProduction - P R O D U C T I O N
 //
 /////////////////////////////////////////////////////////////
-class CProduction
+class ESSMODELSHARED_EXPORT CProduction
 {
 public:
   CProduction() { }  // Construction
@@ -161,7 +163,7 @@ public:
 // 5.      CProgMod    - P R O G R A M  M O D U L
 //
 /////////////////////////////////////////////////////////////
-class CProgMod 
+class ESSMODELSHARED_EXPORT CProgMod
 {
 public:
   CProgMod() { }  // Construction
@@ -184,7 +186,7 @@ public:
 // 6.  CMapProgModuls  - Map of P R O G R A M  M O D U L S
 //
 /////////////////////////////////////////////////////////////
-class CMapProgModuls
+class ESSMODELSHARED_EXPORT CMapProgModuls
 {
 public:
   map <string, CProgMod* > mpr;
@@ -206,7 +208,7 @@ public:
 // 7.      CSlot       - S L O T  O F  F R A M E
 //
 /////////////////////////////////////////////////////////////
-class CSlot 
+class ESSMODELSHARED_EXPORT CSlot
 {
 public:
  CSlot() { }
@@ -223,7 +225,7 @@ public:
 // 8.  CArraySlots     - Array of S L O T S  O F  F R A M E
 //
 /////////////////////////////////////////////////////////////
-class CArraySlots
+class ESSMODELSHARED_EXPORT CArraySlots
 {
 public:
   vector <CSlot*> as;
@@ -245,7 +247,7 @@ public:
 // 9.      CFrame      - F R A M E
 //
 /////////////////////////////////////////////////////////////
-class CFrame
+class ESSMODELSHARED_EXPORT CFrame
 {
 public:
   CFrame() { }
@@ -262,7 +264,7 @@ public:
 // 10.   CMapFrames    - Map  of  F R A M E
 //
 /////////////////////////////////////////////////////////////
-class CMapFrames
+class ESSMODELSHARED_EXPORT CMapFrames
 {
 public:
   map <string, CFrame* > mfr;
@@ -285,7 +287,7 @@ public:
 // 12.CArrayProduction - Array of P R O D U C T I O N S
 //
 /////////////////////////////////////////////////////////////
-class CArrayProduction
+class ESSMODELSHARED_EXPORT CArrayProduction
 {
 public:
   vector <CProduction*> apr;
@@ -306,7 +308,7 @@ public:
 // 13.     CStrategy   - S T R A T E G Y
 //
 /////////////////////////////////////////////////////////////
-class CStrategy
+class ESSMODELSHARED_EXPORT CStrategy
 {
 public:
   CStrategy() { }  // Construction
@@ -323,7 +325,7 @@ public:
 // 14.  CMapStrategies  - Map  of  S T R A T E G I E S
 //
 /////////////////////////////////////////////////////////////
-class CMapStrategies
+class ESSMODELSHARED_EXPORT CMapStrategies
 {
 public:
     map <string, CStrategy* > mst;

@@ -7,7 +7,9 @@
 #include "objects.h"
 #include "archive.h"
 
-class Project
+#include "essmodel_global.h"
+
+class ESSMODELSHARED_EXPORT Project
 {
 public:
     Project();
