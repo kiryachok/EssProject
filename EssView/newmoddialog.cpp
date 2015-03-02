@@ -1,6 +1,6 @@
 #include "newmoddialog.h"
 #include "ui_newmoddialog.h"
-#include "launchconditions.h"
+#include "launchconditionsdialog.h"
 
 NewModDialog::NewModDialog(QWidget *parent) :
     QDialog(parent),
@@ -21,7 +21,7 @@ void NewModDialog::on_closeButton_clicked()
 
 void NewModDialog::on_changeButton_clicked()
 {
-    LaunchConditions *launchCond = new LaunchConditions(this);
-    launchCond->setModal(true);
-    launchCond->exec();
+    LaunchConditionsDialog *launchCondDialog = new LaunchConditionsDialog(this);
+    launchCondDialog->setModal(true);
+    launchCondDialog->exec();
 }
