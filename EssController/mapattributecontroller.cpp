@@ -73,7 +73,8 @@ void MapAttributeController::loadFile(QString fileName) {
     file.close();
 }
 
-void MapAttributeController::saveFile(QString fileName) {
+void MapAttributeController::saveFile(QString fileName)
+{
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly)) {
         return;
