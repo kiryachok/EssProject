@@ -8,8 +8,7 @@ namespace Ui {
 class PrModDialog;
 }
 
-class ESSVIEWSHARED_EXPORT PrModDialog : public QDialog
-{
+class ESSVIEWSHARED_EXPORT PrModDialog : public QDialog {
     Q_OBJECT
 
 public:

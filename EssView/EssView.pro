@@ -18,7 +18,8 @@ SOURCES += essview.cpp \
     newmoddialog.cpp \
     prmoddialog.cpp \
     attrwindow.cpp \
-    newattrwindow.cpp
+    newattrwindow.cpp \
+    launchconditions.cpp
 
 HEADERS += essview.h\
         essview_global.h \
@@ -27,7 +28,8 @@ HEADERS += essview.h\
     newmoddialog.h \
     prmoddialog.h \
     attrwindow.h \
-    newattrwindow.h
+    newattrwindow.h \
+    launchconditions.h
 
 unix {
     target.path = /usr/lib
@@ -40,7 +42,8 @@ FORMS += \
     newmoddialog.ui \
     prmoddialog.ui \
     attrwindow.ui \
-    newattrwindow.ui
+    newattrwindow.ui \
+    launchconditions.ui
 
 CONFIG(debug, debug|release): {
     OUTPUT_DIR = "$$PWD/../../buildEss/debug"
