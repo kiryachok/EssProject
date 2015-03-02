@@ -64,6 +64,7 @@ public:
   void setDefaultValue();
 
   string getValueAsText();
+  string getTypeString();
 
   static BYTE type(string stype);
 

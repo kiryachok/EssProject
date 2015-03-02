@@ -40,6 +40,8 @@ private slots:
 
     void on_listWidgetAttributes_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
+    void on_buttonExport_clicked();
+
 private:
     Ui::AttrWindow *ui;
 

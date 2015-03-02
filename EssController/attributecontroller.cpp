@@ -21,6 +21,10 @@ BYTE AttributeController::getType() {
     return attr->m_Type;
 }
 
+QString AttributeController::getTypeString() {
+    return attr->getTypeString().c_str();
+}
+
 QString AttributeController::getValue() {
     return QString(attr->getValueAsText().c_str());
 }

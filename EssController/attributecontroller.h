@@ -18,6 +18,8 @@ public:
 
     BYTE getType();
 
+    QString getTypeString();
+
     QString getValue();
 
     bool setFullName(QString value);

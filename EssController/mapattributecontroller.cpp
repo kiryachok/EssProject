@@ -73,6 +73,25 @@ void MapAttributeController::loadFile(QString fileName) {
     file.close();
 }
 
+void MapAttributeController::saveFile(QString fileName) {
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly)) {
+        return;
+    }
+    QTextStream in(&file);
+    string key;
+    CKnAttr* attr = NULL;
+    attributes->begin();
+    while (attributes->hasNext()) {
+        attributes->GetNextAssoc(key, attr);
+        AttributeController* controller = getAttributeController(key.c_str());
+        in << controller->getShortName()
+           << " (" << controller->getTypeString() << ")\n"
+           << controller->getFullName() << "\n\n";
+    }
+    file.close();
+}
+
 void MapAttributeController::refresh() {
     string key;
     CKnAttr* value = NULL;

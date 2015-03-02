@@ -359,6 +359,19 @@ string CKnAttr::getValueAsText() {
     return string();
 }
 
+string CKnAttr::getTypeString() {
+    switch (m_Type) {
+    case 2:
+        return "string";
+    case 1:
+        return "numeric";
+    case 0:
+        return "logical";
+    default:
+        return "";
+    }
+}
+
 void CMapAttributes::removeAt(string key) {
     mpa.erase(key);
 }

@@ -23,6 +23,8 @@ public:
 
     void loadFile(QString fileName);
 
+    void saveFile(QString fileName);
+
     void refresh();
 
     ~MapAttributeController();

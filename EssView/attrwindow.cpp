@@ -45,6 +45,15 @@ void AttrWindow::on_buttonImport_clicked()
     }
 }
 
+void AttrWindow::on_buttonExport_clicked()
+{
+    QString caption = "Save file";
+    QString dir = "";
+    QString filter = "*.atr";
+    QString fileName = QFileDialog::getSaveFileName(this, caption, dir, filter);
+    ctrl->saveFile(fileName);
+}
+
 void AttrWindow::on_buttonNewAttribute_clicked()
 {
     AttributeController* controller = ctrl->getAttributeController();
