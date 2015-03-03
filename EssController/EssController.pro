@@ -13,12 +13,14 @@ DEFINES += ESSCONTROLLER_LIBRARY
 
 SOURCES += esscontroller.cpp \
     mapattributecontroller.cpp \
-    attributecontroller.cpp
+    attributecontroller.cpp \
+    prmodcontroller.cpp
 
 HEADERS += esscontroller.h\
         esscontroller_global.h \
     mapattributecontroller.h \
-    attributecontroller.h
+    attributecontroller.h \
+    prmodcontroller.h
 
 unix {
     target.path = /usr/lib

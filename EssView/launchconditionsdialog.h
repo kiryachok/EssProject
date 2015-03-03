@@ -15,6 +15,9 @@ public:
     explicit LaunchConditionsDialog(QWidget *parent = 0);
     ~LaunchConditionsDialog();
 
+private slots:
+    void on_newLogicButton_clicked();
+
 private:
     Ui::LaunchConditionsDialog *ui;
 };
