@@ -293,7 +293,7 @@ bool CKnAttr::setShortName(string value) {
 BYTE CKnAttr::type(string stype) {
 #ifdef Q_OS_LINUX
     std::transform(stype.begin(), stype.end(), stype.begin(), (int(*)(int))std::tolower);
-#elsif
+#else
     std::transform(stype.begin(), stype.end(), stype.begin(), ::tolower);
 #endif
     if (stype == "logical") {
