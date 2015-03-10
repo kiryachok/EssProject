@@ -1,9 +1,12 @@
 #include "projectcontroller.h"
 
 
-Projectcontroller::Projectcontroller()
+Projectcontroller::Projectcontroller(QObject parent)
+    : QObject(parent)
 {
     proj = new Project();
+
+    this->_mapStrategyController = new CMapStrategiesController(this);
 }
 
 Projectcontroller::~Projectcontroller()

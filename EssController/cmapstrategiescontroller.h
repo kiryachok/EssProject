@@ -5,8 +5,9 @@
 #include <QTableWidget>
 
 #include "objects.h"
+#include "esscontroller_global.h"
 
-class CMapStrategiesController : public QObject
+class ESSCONTROLLERSHARED_EXPORT CMapStrategiesController : public QObject
 {
     Q_OBJECT
 

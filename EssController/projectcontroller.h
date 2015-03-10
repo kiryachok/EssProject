@@ -7,6 +7,7 @@
 
 #include "../EssModel/project.h"
 #include "../EssView/mainwindow.h"
+#include "cmapstrategiescontroller.h"
 
 #include "esscontroller_global.h"
 
@@ -18,8 +19,11 @@ private:
     Project *proj;
     MainWindow *mainWindow;
     QString saveName;
+
+    CMapStrategiesController *_mapStrategyController;
+
 public:
-    Projectcontroller();
+    Projectcontroller(QObject *parent = 0);
     ~Projectcontroller();
 
     void initView(MainWindow *window);
