@@ -248,30 +248,31 @@ void CMapAttributes::PrintFullAttribs(string FileName)
 //-----------------------------------------------------------
 void CMapAttributes::Serialize(CArch& ar)
 {
-  string key, s1="CMapAttributes";
-  CKnAttr* pKnAttr=NULL;
-  int Count;
-  if (ar.IsStoring()) {
-    Count = mpa.size();
-    ar<<Count<<s1;
-    iA=mpa.begin();
-    for (; iA!=mpa.end();)  {
-      GetNextAssoc(s1, pKnAttr);
-      ar<<s1;
-      pKnAttr->Serialize(ar);
+    string key, s1="CMapAttributes";
+    CKnAttr* pKnAttr=NULL;
+    int Count;
+    if (ar.IsStoring()) {
+      Count = mpa.size();
+      ar<<Count<<s1;
+      iA=mpa.begin();
+      for (; iA!=mpa.end();)  {
+        GetNextAssoc(s1, pKnAttr);
+        ar<<s1;
+        pKnAttr->Serialize(ar);
+      }
     }
-  }
-  else
-  {
-    ar>>Count>>key;
-    if (key !=s1) { throw (-24);  }
-    for(int i=0; i<Count; i++) {
-      ar>>key;
-      pKnAttr = new CKnAttr;
-      pKnAttr->Serialize(ar);
-      mpa[key]=pKnAttr;
+    else
+    {
+      ar>>Count>>key;
+      if (key !=s1) { throw (-24);  }
+      for(int i=0; i<Count; i++) {
+        ar>>key;
+        pKnAttr = new CKnAttr;
+        pKnAttr->Serialize(ar);
+        mpa[key]=pKnAttr;
+      }
     }
-  }
+
 }
 
 bool CKnAttr::setFullName(string value) {
@@ -293,7 +294,7 @@ bool CKnAttr::setShortName(string value) {
 BYTE CKnAttr::type(string stype) {
 #ifdef Q_OS_LINUX
     std::transform(stype.begin(), stype.end(), stype.begin(), (int(*)(int))std::tolower);
-#elsif
+#else
     std::transform(stype.begin(), stype.end(), stype.begin(), ::tolower);
 #endif
     if (stype == "logical") {

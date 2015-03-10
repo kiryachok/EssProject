@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       -= gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = EssController
 TEMPLATE = lib
@@ -14,13 +15,15 @@ DEFINES += ESSCONTROLLER_LIBRARY
 SOURCES += esscontroller.cpp \
     mapattributecontroller.cpp \
     attributecontroller.cpp \
-    prmodcontroller.cpp
+    prmodcontroller.cpp \
+    projectcontroller.cpp
 
 HEADERS += esscontroller.h\
         esscontroller_global.h \
     mapattributecontroller.h \
     attributecontroller.h \
-    prmodcontroller.h
+    prmodcontroller.h \
+    projectcontroller.h
 
 unix {
     target.path = /usr/lib
