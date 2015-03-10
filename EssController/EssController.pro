@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT += gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = EssController
@@ -12,18 +12,20 @@ TEMPLATE = lib
 
 DEFINES += ESSCONTROLLER_LIBRARY
 
-SOURCES += esscontroller.cpp \
+SOURCES += \
     mapattributecontroller.cpp \
     attributecontroller.cpp \
     prmodcontroller.cpp \
-    projectcontroller.cpp
+    projectcontroller.cpp \
+    cmapstrategiescontroller.cpp
 
-HEADERS += esscontroller.h\
+HEADERS +=\
         esscontroller_global.h \
     mapattributecontroller.h \
     attributecontroller.h \
     prmodcontroller.h \
-    projectcontroller.h
+    projectcontroller.h \
+    cmapstrategiescontroller.h
 
 unix {
     target.path = /usr/lib
@@ -42,5 +44,7 @@ MOC_DIR     = "$$OUTPUT_DIR/moc/"
 RCC_DIR     = "$$OUTPUT_DIR/res/"
 DESTDIR     = "$$OUTPUT_DIR/bin/"
 OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
+
+INCLUDEPATH += "../EssModel/"
 
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel

@@ -8,7 +8,9 @@
 #include "../EssModel/project.h"
 #include "../EssView/mainwindow.h"
 
-class Projectcontroller : public QObject
+#include "esscontroller_global.h"
+
+class ESSCONTROLLERSHARED_EXPORT Projectcontroller : public QObject
 {
     Q_OBJECT
 
