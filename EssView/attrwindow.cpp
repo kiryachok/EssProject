@@ -108,7 +108,7 @@ void AttrWindow::onAttributeRemoved() {
 }
 
 void AttrWindow::on_listWidgetAttributes_currentItemChanged(QListWidgetItem *current,
-                                                          QListWidgetItem *previous)
+                                                          QListWidgetItem */*previous*/)
 {
     if (ui->listWidgetAttributes->currentRow() < 0) {
         ui->lineEditShortName->setText("");
