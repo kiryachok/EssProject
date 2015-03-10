@@ -1,7 +1,7 @@
 #include "projectcontroller.h"
 
 
-Projectcontroller::Projectcontroller(QObject parent)
+Projectcontroller::Projectcontroller(QObject *parent)
     : QObject(parent)
 {
     proj = new Project();

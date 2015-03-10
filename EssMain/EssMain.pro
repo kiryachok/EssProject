@@ -27,6 +27,7 @@ DESTDIR     = "$$OUTPUT_DIR/bin/"
 OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
 
 INCLUDEPATH += "../EssView/"
+INCLUDEPATH += "../EssModel/"
 
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssView
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel
