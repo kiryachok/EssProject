@@ -51,7 +51,13 @@ void Projectcontroller::handleOpen()
     QString filter = "*.bk4";
     QString fileName = QFileDialog::getOpenFileName(0, caption, dir, filter);
 
-    proj->loadFile(fileName.toLocal8Bit().data());
+
+    CArch *arh = new CArch(saveName.toLocal8Bit().data(), 0);
+
+    m_MapAttributes.Serialize(*arh);
+    m_MapFrames.Serialize(*arh);
+    m_MapProgModuls.Serialize(*arh);
+    _mapStrategyController->Serialize(*arh);
 }
 
 void Projectcontroller::handleSave()
@@ -67,7 +73,14 @@ void Projectcontroller::handleSave()
         saveName = fileName;
     }
 
-    proj->saveFile(saveName.toLocal8Bit().data());
+    CArch *arh = new CArch(saveName.toLocal8Bit().data(), 0);
+
+
+    m_MapAttributes.Serialize(*arh);
+    m_MapFrames.Serialize(*arh);
+    m_MapProgModuls.Serialize(*arh);
+    _mapStrategyController->Serialize(*arh);
+
 }
 
 void Projectcontroller::handleSaveAs()
@@ -78,7 +91,13 @@ void Projectcontroller::handleSaveAs()
     QString fileName = QFileDialog::getSaveFileName(0, caption, dir, filter);
     saveName = fileName;
 
-    proj->saveFile(saveName.toLocal8Bit().data());
+    CArch *arh = new CArch(saveName.toLocal8Bit().data(), 0);
+
+
+    m_MapAttributes.Serialize(*arh);
+    m_MapFrames.Serialize(*arh);
+    m_MapProgModuls.Serialize(*arh);
+    _mapStrategyController->Serialize(*arh);
 }
 
 void Projectcontroller::handleNew()

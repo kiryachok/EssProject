@@ -21,6 +21,10 @@ private:
     MainWindow *mainWindow;
     QString saveName;
 
+    CMapAttributes m_MapAttributes;
+    CMapProgModuls m_MapProgModuls;
+  //  CMapStrategies m_MapStrategies;
+    CMapFrames m_MapFrames;
     CMapStrategiesController *_mapStrategyController;
 
     MapAttributeController* _mapAttributeController;
