@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tableWidget_Products->resizeColumnsToContents();
     ui->tableWidget_Strategy->resizeColumnsToContents();
+
 }
 
 MainWindow::~MainWindow()
@@ -26,7 +27,7 @@ void MainWindow::on_action_modules_triggered()
 
 void MainWindow::on_action_attributes_triggered()
 {
-    AttrWindow* window = new AttrWindow(&attr_ctrl, this);
+    AttrWindow* window = new AttrWindow(attr_ctrl, this);
     window->show();
 }
 
@@ -53,4 +54,8 @@ void MainWindow::on_action_save_triggered()
 void MainWindow::on_action_new_triggered()
 {
     emit this->newFile();
+}
+
+void MainWindow::setMapAttributeController(MapAttributeController *ctrl) {
+    this->attr_ctrl = ctrl;
 }

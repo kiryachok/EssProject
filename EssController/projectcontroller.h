@@ -8,6 +8,7 @@
 #include "../EssModel/project.h"
 #include "../EssView/mainwindow.h"
 #include "cmapstrategiescontroller.h"
+#include "mapattributecontroller.h"
 
 #include "esscontroller_global.h"
 
@@ -21,6 +22,8 @@ private:
     QString saveName;
 
     CMapStrategiesController *_mapStrategyController;
+
+    MapAttributeController* _mapAttributeController;
 
 public:
     Projectcontroller(QObject *parent = 0);

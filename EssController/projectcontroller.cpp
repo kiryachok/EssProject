@@ -7,6 +7,7 @@ Projectcontroller::Projectcontroller(QObject *parent)
     proj = new Project();
 
     this->_mapStrategyController = new CMapStrategiesController(this);
+    this->_mapAttributeController = new MapAttributeController();
 }
 
 Projectcontroller::~Projectcontroller()
@@ -33,6 +34,8 @@ void Projectcontroller::initView(MainWindow *window)
         connect(mainWindow, SIGNAL(saveFile()), this, SLOT(handleSave()));
         connect(mainWindow, SIGNAL(saveFileAs()), this, SLOT(handleSaveAs()));
         connect(mainWindow, SIGNAL(newFile()), this, SLOT(handleNew()));
+
+        window->setMapAttributeController(_mapAttributeController);
     }
 }
 

@@ -20,6 +20,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void setMapAttributeController(MapAttributeController* ctrl);
+
 signals:
     void openFile();
     void saveFile();
@@ -42,7 +44,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    MapAttributeController attr_ctrl;
+    MapAttributeController* attr_ctrl;
 };
 
 #endif // MAINWINDOW_H
