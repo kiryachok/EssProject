@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "prmoddialog.h"
+#include "addnewstrategydialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -56,6 +57,24 @@ void MainWindow::on_action_new_triggered()
     emit this->newFile();
 }
 
+QTableWidget* MainWindow::getMapStrategyTableView()
+{
+    return this->ui->tableWidget_Strategy;
+}
+
 void MainWindow::setMapAttributeController(MapAttributeController *ctrl) {
     this->attr_ctrl = ctrl;
+}
+void MainWindow::on_action_productionNew_triggered()
+{
+    AddNewStrategyDialog *addStartegyDialogue = new AddNewStrategyDialog(this);
+    if (QDialog::Accepted == addStartegyDialogue->exec()) {
+        emit this->actionNewStrategy(addStartegyDialogue->getStrategyName(), addStartegyDialogue->getStrategyComment());
+    }
+    delete addStartegyDialogue;
+}
+
+void MainWindow::on_action_productionRemove_triggered()
+{
+    emit this->actionRemoveStrategy();
 }

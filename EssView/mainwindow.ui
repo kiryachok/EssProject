@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout" columnstretch="2,5">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="1,2">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -27,66 +27,6 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QTableWidget" name="tableWidget_Strategy">
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>N</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>С т р а т е г и и</string>
-       </property>
-      </column>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QTextBrowser" name="textBrowser"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QTableWidget" name="tableWidget_Frames">
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>N</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Ф р е й м ы</string>
-       </property>
-      </column>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QTextEdit" name="textEdit"/>
-    </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QTableWidget" name="tableWidget_SlotsByFrame">
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>N</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>С л о т ы  а к т и в н о г о  Ф р е й м а</string>
-       </property>
-      </column>
-     </widget>
-    </item>
     <item row="1" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget_Products">
       <attribute name="horizontalHeaderCascadingSectionResizes">
@@ -115,6 +55,19 @@
       </column>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QTableWidget" name="tableWidget_Strategy">
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTextBrowser" name="textBrowser"/>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -123,7 +76,7 @@
      <x>0</x>
      <y>0</y>
      <width>1027</width>
-     <height>25</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -147,8 +100,8 @@
      <property name="title">
       <string>Стратегии</string>
      </property>
-     <addaction name="action_17"/>
-     <addaction name="action_18"/>
+     <addaction name="action_productionNew"/>
+     <addaction name="action_productionRemove"/>
      <addaction name="separator"/>
      <addaction name="action_20"/>
      <addaction name="separator"/>
@@ -262,12 +215,12 @@
     <string>Хранилище значений...</string>
    </property>
   </action>
-  <action name="action_17">
+  <action name="action_productionNew">
    <property name="text">
     <string>Новая</string>
    </property>
   </action>
-  <action name="action_18">
+  <action name="action_productionRemove">
    <property name="text">
     <string>Удалить</string>
    </property>

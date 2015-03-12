@@ -20,7 +20,8 @@ SOURCES += essview.cpp \
     attrwindow.cpp \
     newattrwindow.cpp \
     launchconditionsdialog.cpp \
-    newlogicaldialog.cpp
+    newlogicaldialog.cpp \
+    addnewstrategydialog.cpp
 
 HEADERS += essview.h\
         essview_global.h \
@@ -31,7 +32,8 @@ HEADERS += essview.h\
     attrwindow.h \
     newattrwindow.h \
     launchconditionsdialog.h \
-    newlogicaldialog.h
+    newlogicaldialog.h \
+    addnewstrategydialog.h
 
 unix {
     target.path = /usr/lib
@@ -46,7 +48,8 @@ FORMS += \
     attrwindow.ui \
     newattrwindow.ui \
     launchconditionsdialog.ui \
-    newlogicaldialog.ui
+    newlogicaldialog.ui \
+    addnewstrategydialog.ui
 
 CONFIG(debug, debug|release): {
     OUTPUT_DIR = "$$PWD/../../buildEss/debug"

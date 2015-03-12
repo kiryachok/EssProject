@@ -20,6 +20,7 @@ private:
 
 public:
     explicit CMapStrategiesController(QObject *parent = 0);
+    ~CMapStrategiesController();
 
     void InitView(QTableWidget*);
 
@@ -34,6 +35,8 @@ private slots:
     void handleSelectionChanged();
 
 public slots:
+    void handleAddStrategy(QString, QString);
+    void handleRemoveStrategy();
 
 };
 

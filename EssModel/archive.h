@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string>
 
+#include "essmodel_global.h"
+
 using namespace std;
 typedef unsigned UINT;
 typedef unsigned char BYTE;
@@ -14,7 +16,7 @@ typedef __int64 LONGLONG;
 typedef unsigned __int64 ULONGLONG;
 #endif
 
-class CArch
+class ESSMODELSHARED_EXPORT CArch
 {
 public:
   // Flag values   enum Mode { store = 0, load = 1};
