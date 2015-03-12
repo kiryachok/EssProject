@@ -17,7 +17,9 @@ SOURCES += \
     attributecontroller.cpp \
     prmodcontroller.cpp \
     projectcontroller.cpp \
-    cmapstrategiescontroller.cpp
+    cmapstrategiescontroller.cpp \
+    progmodcontroller.cpp \
+    mapprogmodulscontroller.cpp
 
 HEADERS +=\
         esscontroller_global.h \
@@ -25,7 +27,9 @@ HEADERS +=\
     attributecontroller.h \
     prmodcontroller.h \
     projectcontroller.h \
-    cmapstrategiescontroller.h
+    cmapstrategiescontroller.h \
+    progmodcontroller.h \
+    mapprogmodulscontroller.h
 
 unix {
     target.path = /usr/lib
