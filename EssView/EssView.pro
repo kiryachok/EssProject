@@ -66,4 +66,3 @@ OBJECTS_DIR = "$$OUTPUT_DIR/obj/"
 INCLUDEPATH += "../EssModel/"
 
 LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssModel
-LIBS   += -L"$$OUTPUT_DIR/bin/" -lEssController

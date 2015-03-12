@@ -106,17 +106,17 @@
       </property>
       <item>
        <property name="text">
-        <string>Logical</string>
+        <string>logical</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Numeric</string>
+        <string>numeric</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>String</string>
+        <string>string</string>
        </property>
       </item>
      </widget>

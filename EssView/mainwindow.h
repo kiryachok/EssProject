@@ -9,7 +9,6 @@
 #include "newattrwindow.h"
 
 #include "essview_global.h"
-#include "../EssController/mapattributecontroller.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +25,6 @@ public:
     QTableWidget* getMapStrategyTableView();
     QTextBrowser* getCurrentStrategyView();
 
-    void setMapAttributeController(MapAttributeController* ctrl);
-
 signals:
     void openFile();
     void saveFile();
@@ -36,6 +33,7 @@ signals:
 
     void actionNewStrategy(QString, QString);
     void actionRemoveStrategy();
+    void actionAttributes(AttrWindow* window);
 
 private slots:
     void on_action_modules_triggered();
@@ -56,8 +54,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
-    MapAttributeController* attr_ctrl;
 };
 
 #endif // MAINWINDOW_H

@@ -5,7 +5,6 @@
 #include <QMessageBox>
 
 #include "essview_global.h"
-#include "../EssController/attributecontroller.h"
 
 namespace Ui {
 class NewAttrWindow;
@@ -16,8 +15,18 @@ class ESSVIEWSHARED_EXPORT NewAttrWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit NewAttrWindow(AttributeController* controller, QWidget *parent = 0);
+    explicit NewAttrWindow(QWidget *parent = 0);
+    void initView(QString fullName = QString(), QString shortName = QString(),
+                  QString type = QString(), QString value = QString());
     ~NewAttrWindow();
+
+signals:
+    void tryDataChange(QString key, QString fullName, QString shortName,
+                       QString type, QString value);
+
+public slots:
+    void dataChecked(bool valid);
+
 
 private slots:
     void on_pushButtonCancel_clicked();
@@ -25,7 +34,8 @@ private slots:
 
 private:
     Ui::NewAttrWindow *ui;
-    AttributeController* ctrl;
+
+    QString key;
 };
 
 #endif // NEWATTRWINDOW_H

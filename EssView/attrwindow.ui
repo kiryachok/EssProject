@@ -102,17 +102,17 @@
            </property>
            <item>
             <property name="text">
-             <string>Logical</string>
+             <string>logical</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>Numeric</string>
+             <string>numeric</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>String</string>
+             <string>string</string>
             </property>
            </item>
           </widget>
@@ -293,7 +293,7 @@
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

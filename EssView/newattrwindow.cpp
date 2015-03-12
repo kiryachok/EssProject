@@ -1,28 +1,24 @@
 #include "newattrwindow.h"
 #include "ui_newattrwindow.h"
 
-NewAttrWindow::NewAttrWindow(AttributeController* controller, QWidget *parent) :
+NewAttrWindow::NewAttrWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewAttrWindow)
 {
     ui->setupUi(this);
-
-    ctrl = controller;
-
-    ui->lineEditFullName->setText(ctrl->getFullName());
-    ui->lineEditShortName->setText(ctrl->getShortName());
-    ui->comboBoxType->setCurrentIndex(ctrl->getType());
-    ui->lineEditValue->setText(ctrl->getValue());
 }
 
-NewAttrWindow::~NewAttrWindow()
-{
-    delete ui;
+void NewAttrWindow::initView(QString fullName, QString shortName, QString type, QString value) {
+    key = fullName;
+    ui->lineEditFullName->setText(fullName);
+    ui->lineEditShortName->setText(shortName);
+    ui->comboBoxType->setCurrentText(type);
+    ui->lineEditValue->setText(value);
 }
 
 void NewAttrWindow::on_pushButtonCancel_clicked()
 {
-    this->close();
+    close();
 }
 
 void NewAttrWindow::on_pushButtonOk_clicked()
@@ -32,9 +28,11 @@ void NewAttrWindow::on_pushButtonOk_clicked()
     QString type = ui->comboBoxType->currentText();
     QString value = ui->lineEditValue->text();
 
-    if (ctrl->setFullName(fullName) && ctrl->setShortName(shortName) &&
-            ctrl->setType(type) && ctrl->setValue(value)) {
-        ctrl->acceptChanges();
+    emit tryDataChange(key, fullName, shortName, type, value);
+}
+
+void NewAttrWindow::dataChecked(bool valid) {
+    if (valid) {
         close();
     } else {
         QString title = "";
@@ -43,4 +41,9 @@ void NewAttrWindow::on_pushButtonOk_clicked()
         QMessageBox* message = new QMessageBox(icon, title, text, QMessageBox::Ok, this);
         message->exec();
     }
+}
+
+NewAttrWindow::~NewAttrWindow()
+{
+    delete ui;
 }

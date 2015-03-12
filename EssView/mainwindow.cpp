@@ -28,7 +28,8 @@ void MainWindow::on_action_modules_triggered()
 
 void MainWindow::on_action_attributes_triggered()
 {
-    AttrWindow* window = new AttrWindow(attr_ctrl, this);
+    AttrWindow* window = new AttrWindow(this);
+    emit actionAttributes(window);
     window->show();
 }
 
@@ -67,9 +68,6 @@ QTextBrowser* MainWindow::getCurrentStrategyView()
     return this->ui->textBrowser;
 }
 
-void MainWindow::setMapAttributeController(MapAttributeController *ctrl) {
-    this->attr_ctrl = ctrl;
-}
 void MainWindow::on_action_productionNew_triggered()
 {
     AddNewStrategyDialog *addStartegyDialogue = new AddNewStrategyDialog(this);

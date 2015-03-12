@@ -7,6 +7,7 @@
 #include "../EssModel/objects.h"
 #include "esscontroller_global.h"
 #include "attributecontroller.h"
+#include "../EssView/mainwindow.h"
 
 class ESSCONTROLLERSHARED_EXPORT MapAttributeController : public QObject
 {
@@ -17,19 +18,17 @@ public:
 
     AttributeController* getAttributeController(QString key = QString());
 
-    void acceptChanges();
-
-    void discardChanges();
-
-    void loadFile(QString fileName);
-
-    void saveFile(QString fileName);
-
     void refresh();
+
+    void InitView(MainWindow* window);
 
     ~MapAttributeController();
 
-public slots:
+private slots:
+
+    void acceptChanges();
+
+    void discardChanges();
 
     void add(CKnAttr* value);
 
@@ -37,6 +36,16 @@ public slots:
 
     void remove(QString key);
 
+    void setAttributesWindow(AttrWindow* window);
+
+    void loadFile(QString fileName);
+
+    void saveFile(QString fileName);
+
+    void setCurrentItem(QString key);
+
+    void tryDataChange(QString key, QString fullName, QString shortName,
+                       QString type, QString value);
 signals:
 
     void attributeCreated(AttributeController*);
@@ -49,6 +58,8 @@ private:
     CMapAttributes* attributes;
 
     CMapAttributes* old;
+
+    AttrWindow* window;
 };
 
 #endif // MAPATTRIBUTECONTROLLER_H

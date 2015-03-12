@@ -1,33 +1,22 @@
 #include "attrwindow.h"
 #include "ui_attrwindow.h"
 
-AttrWindow::AttrWindow(MapAttributeController* controller, QWidget *parent) :
+AttrWindow::AttrWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AttrWindow)
 {
     ui->setupUi(this);
-
-    ctrl = controller;
-
-    connect(ctrl, SIGNAL(attributeCreated(AttributeController*)),
-            this, SLOT(onAttributeCreated(AttributeController*)));
-    connect(ctrl, SIGNAL(attributeUpdated(AttributeController*,QString)),
-            this, SLOT(onAttributeUpdated(AttributeController*,QString)));
-    connect(ctrl, SIGNAL(attributeRemoved(QString)),
-            this, SLOT(onAttributeRemoved()));
-
-    ctrl->refresh();
 }
 
 void AttrWindow::on_buttonOk_clicked()
 {
-    ctrl->acceptChanges();
+    emit accepted();
     close();
 }
 
 void AttrWindow::on_buttonCancel_clicked()
 {
-    ctrl->discardChanges();
+    emit rejected();
     close();
 }
 
@@ -41,7 +30,7 @@ void AttrWindow::on_buttonImport_clicked()
     ui->listWidgetAttributes->clear();
     QStringList files = dialog.selectedFiles();
     if (!files.empty()) {
-        ctrl->loadFile(dialog.selectedFiles()[0]);
+        emit importFile(dialog.selectedFiles()[0]);
     }
 }
 
@@ -51,14 +40,17 @@ void AttrWindow::on_buttonExport_clicked()
     QString dir = "";
     QString filter = "*.atr";
     QString fileName = QFileDialog::getSaveFileName(this, caption, dir, filter);
-    ctrl->saveFile(fileName);
+    emit exportFile(fileName);
 }
 
 void AttrWindow::on_buttonNewAttribute_clicked()
 {
-    AttributeController* controller = ctrl->getAttributeController();
-    NewAttrWindow* window = new NewAttrWindow(controller, this);
-    window->exec();
+    lastNewAttrWindow = new NewAttrWindow(this);
+    lastNewAttrWindow->initView();
+    connect(lastNewAttrWindow, SIGNAL(tryDataChange(QString,QString,QString,QString,QString)),
+            this, SIGNAL(tryDataChange(QString,QString,QString,QString,QString)));
+    lastNewAttrWindow->exec();
+    ui->listWidgetAttributes->setFocus();
 }
 
 void AttrWindow::on_buttonEditAttribute_clicked()
@@ -66,10 +58,16 @@ void AttrWindow::on_buttonEditAttribute_clicked()
     if (ui->listWidgetAttributes->currentRow() < 0) {
         return;
     }
-    QString key = ui->listWidgetAttributes->currentItem()->text();
-    AttributeController* controller = ctrl->getAttributeController(key);
-    NewAttrWindow* window = new NewAttrWindow(controller, this);
-    window->exec();
+    QString fullName = ui->listWidgetAttributes->currentItem()->text();
+    QString shortName = ui->lineEditShortName->text();
+    QString type = ui->comboBoxType->currentText();
+    QString value = ui->lineEditValue->text();
+    lastNewAttrWindow = new NewAttrWindow(this);
+    lastNewAttrWindow->initView(fullName, shortName, type, value);
+    connect(lastNewAttrWindow, SIGNAL(tryDataChange(QString,QString,QString,QString,QString)),
+            this, SIGNAL(tryDataChange(QString,QString,QString,QString,QString)));
+    lastNewAttrWindow->exec();
+    ui->listWidgetAttributes->setFocus();
 }
 
 void AttrWindow::on_buttonDeleteAttribute_clicked()
@@ -84,27 +82,31 @@ void AttrWindow::on_buttonDeleteAttribute_clicked()
                                            QMessageBox::Yes | QMessageBox::No, this);
     int answer = message->exec();
     if (answer == QMessageBox::Yes) {
-        ctrl->remove(ui->listWidgetAttributes->currentItem()->text());
+        emit remove(ui->listWidgetAttributes->currentItem()->text());
+        ui->listWidgetAttributes->takeItem(ui->listWidgetAttributes->currentRow());
     }
-}
-
-void AttrWindow::onAttributeCreated(AttributeController *controller) {
-    ui->listWidgetAttributes->addItem(controller->getFullName());
-    int size = ui->listWidgetAttributes->count();
-    ui->listWidgetAttributes->setCurrentRow(size - 1);
     ui->listWidgetAttributes->setFocus();
 }
 
-void AttrWindow::onAttributeUpdated(AttributeController *controller, QString key) {
-    QList<QListWidgetItem*> found = ui->listWidgetAttributes->findItems(key, Qt::MatchExactly);
-    found[0]->setText(controller->getFullName());
-    emit ui->listWidgetAttributes->currentItemChanged(found[0], NULL);
-    ui->listWidgetAttributes->setFocus();
+void AttrWindow::AddAttribute(QString fullName, QString shortName, QString type, QString value) {
+    ui->listWidgetAttributes->addItem(fullName);
+    ui->lineEditShortName->setText(shortName);
+    ui->comboBoxType->setCurrentText(type);
+    ui->lineEditValue->setText(value);
 }
 
-void AttrWindow::onAttributeRemoved() {
-    ui->listWidgetAttributes->takeItem(ui->listWidgetAttributes->currentRow());
-    ui->listWidgetAttributes->setFocus();
+void AttrWindow::dataChecked(QString key, QString fullName, QString shortName,
+                             QString type, QString value, bool valid) {
+    if (lastNewAttrWindow != 0) {
+        lastNewAttrWindow->dataChecked(valid);
+        if (valid) {
+            if (key == "") {
+                AddAttribute(fullName, shortName, type, value);
+            } else {
+                setCurrentItem(fullName, shortName, type, value);
+            }
+        }
+    }
 }
 
 void AttrWindow::on_listWidgetAttributes_currentItemChanged(QListWidgetItem *current,
@@ -115,11 +117,15 @@ void AttrWindow::on_listWidgetAttributes_currentItemChanged(QListWidgetItem *cur
         ui->comboBoxType->setCurrentIndex(-1);
         ui->lineEditValue->setText("");
     } else {
-        AttributeController* controller = ctrl->getAttributeController(current->text());
-        ui->lineEditShortName->setText(controller->getShortName());
-        ui->comboBoxType->setCurrentIndex(controller->getType());
-        ui->lineEditValue->setText(controller->getValue());
+        emit currentItemChanged(ui->listWidgetAttributes->currentItem()->text());
     }
+}
+
+void AttrWindow::setCurrentItem(QString fullName, QString shortName, QString type, QString value) {
+    ui->listWidgetAttributes->currentItem()->setText(fullName);
+    ui->lineEditShortName->setText(shortName);
+    ui->comboBoxType->setCurrentText(type);
+    ui->lineEditValue->setText(value);
 }
 
 AttrWindow::~AttrWindow()
