@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QTextBrowser>
 
 #include "attrwindow.h"
 #include "newattrwindow.h"
@@ -21,7 +22,10 @@ class ESSVIEWSHARED_EXPORT MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
     QTableWidget* getMapStrategyTableView();
+    QTextBrowser* getCurrentStrategyView();
+
     void setMapAttributeController(MapAttributeController* ctrl);
 
 signals:

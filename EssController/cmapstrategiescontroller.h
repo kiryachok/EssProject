@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTableWidget>
+#include <QTextBrowser>
 
 #include "objects.h"
 #include "esscontroller_global.h"
@@ -13,6 +14,7 @@ class ESSCONTROLLERSHARED_EXPORT CMapStrategiesController : public QObject
 
 private:
     QTableWidget *_tableView;
+    QTextBrowser *_textBrowser;
     CStrategy *_curentStrategy;
     CMapStrategies *_mapStrategys;
 
@@ -22,17 +24,18 @@ public:
     explicit CMapStrategiesController(QObject *parent = 0);
     ~CMapStrategiesController();
 
-    void InitView(QTableWidget*);
-
+    void InitView(QTableWidget *tableView = NULL, QTextBrowser *textView = NULL);
     void Serialize(CArch&);
+    CStrategy* getCurrentStrategy();
 
 signals:
-    void curentStrategyChanged();
+    void curentStrategyChanged(CStrategy*);
     void curentMapChanged();
 
 private slots:
     void handleMapDataChanged();
     void handleSelectionChanged();
+    void handleCurrentStrategyChanged();
 
 public slots:
     void handleAddStrategy(QString, QString);

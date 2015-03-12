@@ -62,6 +62,11 @@ QTableWidget* MainWindow::getMapStrategyTableView()
     return this->ui->tableWidget_Strategy;
 }
 
+QTextBrowser* MainWindow::getCurrentStrategyView()
+{
+    return this->ui->textBrowser;
+}
+
 void MainWindow::setMapAttributeController(MapAttributeController *ctrl) {
     this->attr_ctrl = ctrl;
 }

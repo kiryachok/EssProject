@@ -36,7 +36,8 @@ void Projectcontroller::initView(MainWindow *window)
         connect(mainWindow, SIGNAL(newFile()), this, SLOT(handleNew()));
 
         window->setMapAttributeController(_mapAttributeController);
-        this->_mapStrategyController->InitView(this->mainWindow->getMapStrategyTableView());
+        this->_mapStrategyController->InitView(this->mainWindow->getMapStrategyTableView(),
+                                               this->mainWindow->getCurrentStrategyView());
         connect(mainWindow, SIGNAL(actionNewStrategy(QString,QString)),
                 this->_mapStrategyController, SLOT(handleAddStrategy(QString,QString)));
         connect(mainWindow, SIGNAL(actionRemoveStrategy()),
