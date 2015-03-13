@@ -13,9 +13,6 @@ public:
     explicit MapProgModulsController(CMapProgModuls* progModuls = new CMapProgModuls);
 
 signals:
-    void progModCreated(CProgMod* progMod);
-    void progModUpdated(CProgMod* progMod);
-    void progModRemoved(QString key);
 
 public slots:
     void addProgMod(CProgMod* progMod);

@@ -6,13 +6,12 @@
 #include <QString>
 #include <QStandardPaths>
 
-QString f_qt;
-
 PrModDialog::PrModDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PrModDialog)
 {
     ui->setupUi(this);
+
 }
 
 PrModDialog::~PrModDialog()

@@ -17,11 +17,8 @@ public:
 
 private slots:
     void on_exitButton_clicked();
-
     void on_newButton_clicked();
-
     void on_exportButton_clicked();
-
     void on_changeButton_clicked();
 
 private:

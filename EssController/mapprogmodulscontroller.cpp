@@ -16,7 +16,6 @@ void MapProgModulsController::addProgMod(CProgMod* progMod)
     {
         this->progModuls->mpr[progMod->m_Name] = progMod;
     }
-    emit this->progModCreated(mod);
 }
 
 void MapProgModulsController::updateProgMod(CProgMod* progMod)
@@ -26,11 +25,9 @@ void MapProgModulsController::updateProgMod(CProgMod* progMod)
     {
         this->progModuls->SetAt(progMod->m_Name, progMod);
     }
-    emit this->progModUpdated(mod);
 }
 
 void MapProgModulsController::removeProgModByName(QString key)
 {
     this->progModuls->mpr.erase(key.toStdString());
-    emit this->progModRemoved(key);
 }

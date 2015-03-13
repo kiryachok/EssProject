@@ -15,7 +15,6 @@ DEFINES += ESSCONTROLLER_LIBRARY
 SOURCES += \
     mapattributecontroller.cpp \
     attributecontroller.cpp \
-    prmodcontroller.cpp \
     projectcontroller.cpp \
     cmapstrategiescontroller.cpp \
     progmodcontroller.cpp \
@@ -25,7 +24,6 @@ HEADERS +=\
         esscontroller_global.h \
     mapattributecontroller.h \
     attributecontroller.h \
-    prmodcontroller.h \
     projectcontroller.h \
     cmapstrategiescontroller.h \
     progmodcontroller.h \

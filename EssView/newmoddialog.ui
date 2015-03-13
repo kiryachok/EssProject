@@ -19,7 +19,11 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QComboBox" name="m_ListDir"/>
+        <widget class="QComboBox" name="m_ListDir">
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label">
@@ -273,7 +277,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="doneButton">
+      <widget class="QPushButton" name="exitButton">
        <property name="text">
         <string>Закончить</string>
        </property>

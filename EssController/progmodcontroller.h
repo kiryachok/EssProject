@@ -44,7 +44,6 @@ public:
     ~ProgModController();
 
 signals:
-    void progModCompleted();
 
 public slots:
 

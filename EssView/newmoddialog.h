@@ -16,10 +16,14 @@ public:
     explicit NewModDialog(QWidget *parent = 0);
     ~NewModDialog();
 
-private slots:
-    void on_closeButton_clicked();
+signals:
+    void newProgModSubmitted();
 
+private slots:
     void on_changeButton_clicked();
+    void on_exitButton_clicked();
+
+    void on_okButton_clicked();
 
 private:
     Ui::NewModDialog *ui;

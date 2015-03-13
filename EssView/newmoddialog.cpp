@@ -14,14 +14,19 @@ NewModDialog::~NewModDialog()
     delete ui;
 }
 
-void NewModDialog::on_closeButton_clicked()
-{
-    close();
-}
-
 void NewModDialog::on_changeButton_clicked()
 {
     LaunchConditionsDialog *launchCondDialog = new LaunchConditionsDialog(this);
     launchCondDialog->setModal(true);
     launchCondDialog->exec();
+}
+
+void NewModDialog::on_exitButton_clicked()
+{
+     close();
+}
+
+void NewModDialog::on_okButton_clicked()
+{
+    emit newProgModSubmitted();
 }
