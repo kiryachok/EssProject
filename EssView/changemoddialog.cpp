@@ -12,3 +12,14 @@ ChangeModDialog::~ChangeModDialog()
 {
     delete ui;
 }
+
+void ChangeModDialog::on_closeButton_clicked()
+{
+    close();
+}
+
+void ChangeModDialog::on_okButton_clicked()
+{
+    emit changedProgModSubmitted();
+    close();
+}

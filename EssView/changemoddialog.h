@@ -16,6 +16,14 @@ public:
     explicit ChangeModDialog(QWidget *parent = 0);
     ~ChangeModDialog();
 
+signals:
+    void changedProgModSubmitted();
+
+private slots:
+    void on_closeButton_clicked();
+
+    void on_okButton_clicked();
+
 private:
     Ui::ChangeModDialog *ui;
 };

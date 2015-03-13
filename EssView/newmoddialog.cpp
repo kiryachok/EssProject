@@ -29,4 +29,5 @@ void NewModDialog::on_exitButton_clicked()
 void NewModDialog::on_okButton_clicked()
 {
     emit newProgModSubmitted();
+    close();
 }

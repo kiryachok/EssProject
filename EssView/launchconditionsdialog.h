@@ -18,6 +18,10 @@ public:
 private slots:
     void on_newLogicButton_clicked();
 
+    void on_newArithmeticButton_clicked();
+
+    void on_newStringButton_clicked();
+
 private:
     Ui::LaunchConditionsDialog *ui;
 };
