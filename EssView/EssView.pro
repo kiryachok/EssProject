@@ -23,7 +23,10 @@ SOURCES += essview.cpp \
     newlogicaldialog.cpp \
     addnewstrategydialog.cpp \
     newarithmeticdialog.cpp \
-    newstringdialog.cpp
+    newstringdialog.cpp \
+    newstringproductiondialog.cpp \
+    productiondialog.cpp \
+    productionlogicdialog.cpp
 
 HEADERS += essview.h\
         essview_global.h \
@@ -37,7 +40,10 @@ HEADERS += essview.h\
     newlogicaldialog.h \
     addnewstrategydialog.h \
     newarithmeticdialog.h \
-    newstringdialog.h
+    newstringdialog.h \
+    newstringproductiondialog.h \
+    productiondialog.h \
+    productionlogicdialog.h
 
 unix {
     target.path = /usr/lib
@@ -55,7 +61,10 @@ FORMS += \
     newlogicaldialog.ui \
     addnewstrategydialog.ui \
     newarithmeticdialog.ui \
-    newstringdialog.ui
+    newstringdialog.ui \
+    newstringproductiondialog.ui \
+    productiondialog.ui \
+    productionlogicdialog.ui
 
 CONFIG(debug, debug|release): {
     OUTPUT_DIR = "$$PWD/../../buildEss/debug"

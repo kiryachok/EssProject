@@ -65,6 +65,7 @@ void Projectcontroller::handleOpen()
     m_MapFrames.Serialize(*arh);
     m_MapProgModuls.Serialize(*arh);
     _mapStrategyController->Serialize(*arh);
+    m_arrProductions.Serialize(*arh);
 }
 
 void Projectcontroller::handleSave()
@@ -87,7 +88,7 @@ void Projectcontroller::handleSave()
     m_MapFrames.Serialize(*arh);
     m_MapProgModuls.Serialize(*arh);
     _mapStrategyController->Serialize(*arh);
-
+    m_arrProductions.Serialize(*arh);
 }
 
 void Projectcontroller::handleSaveAs()
@@ -105,6 +106,7 @@ void Projectcontroller::handleSaveAs()
     m_MapFrames.Serialize(*arh);
     m_MapProgModuls.Serialize(*arh);
     _mapStrategyController->Serialize(*arh);
+    m_arrProductions.Serialize(*arh);
 }
 
 void Projectcontroller::handleNew()

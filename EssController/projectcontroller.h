@@ -20,7 +20,7 @@ private:
     Project *proj;
     MainWindow *mainWindow;
     QString saveName;
-
+    CArrayProduction m_arrProductions;
     CMapAttributes m_MapAttributes;
     CMapProgModuls m_MapProgModuls;
   //  CMapStrategies m_MapStrategies;
@@ -36,6 +36,8 @@ public:
     void initView(MainWindow *window);
     bool saveFile(char* fileName);
     bool loadFile(char* fileName);
+
+
 
 private slots:
     void handleOpen();
