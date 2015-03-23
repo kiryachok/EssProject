@@ -2,7 +2,6 @@
 #define PRODUCTIONDIALOG_H
 
 #include <QMainWindow>
-#include "../EssController/productioncontroller.h"
 
 namespace Ui {
 class ProductionDialog;
@@ -16,6 +15,11 @@ public:
     explicit ProductionDialog(QWidget *parent = 0);
     ~ProductionDialog();
 
+signals:
+
+    void createNewProduction(QString, short);
+    void addNewExpression();
+
 private slots:
     void on_new_logic_pushButton_clicked();
 
@@ -25,9 +29,10 @@ private slots:
 
     void on_finish_pushButton_clicked();
 
+    void on_ok_pushButton_clicked();
+
 private:
     Ui::ProductionDialog *ui;
-    ProductionController *controller;
 
 };
 

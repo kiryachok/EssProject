@@ -7,6 +7,7 @@
 
 #include "attrwindow.h"
 #include "newattrwindow.h"
+#include "productiondialog.h"
 
 #include "essview_global.h"
 
@@ -31,6 +32,7 @@ signals:
     void saveFileAs();
     void newFile();
 
+    void actionNewProduction();
     void actionNewStrategy(QString, QString);
     void actionRemoveStrategy();
     void actionAttributes(AttrWindow* window);
@@ -51,6 +53,10 @@ private slots:
     void on_action_productionNew_triggered();
 
     void on_action_productionRemove_triggered();
+
+    void on_action_24_triggered();
+
+    void on_action_25_triggered();
 
 private:
     Ui::MainWindow *ui;

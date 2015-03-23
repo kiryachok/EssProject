@@ -14,10 +14,6 @@ NewLogicalDialog::~NewLogicalDialog()
     delete ui;
 }
 
-void NewLogicalDialog::setController(ProductionController *cont)
-{
-    controller = cont;
-}
 
 void NewLogicalDialog::on_pushButton_7_clicked()
 {
@@ -71,5 +67,10 @@ void NewLogicalDialog::on_pushButton_10_clicked()
 
 void NewLogicalDialog::on_pushButton_12_clicked()
 {
-    controller->addExpresion(0, ui->lineEdit->text(),1);
+    this->close();
+}
+
+void NewLogicalDialog::on_pushButton_13_clicked()
+{
+    this->close();
 }

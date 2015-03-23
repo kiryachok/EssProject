@@ -1,5 +1,5 @@
 #include "productioncontroller.h"
-
+#include "../EssView/productiondialog.h"
 
 
 ProductionController::ProductionController(CProduction *prod)
@@ -9,6 +9,9 @@ ProductionController::ProductionController(CProduction *prod)
         prod = new CProduction();
     }
     production = prod;
+    productions = new CArrayProduction();
+
+
 }
 
 void ProductionController::addExpresion( char type, QString formula, short value)
@@ -23,6 +26,13 @@ void ProductionController::addExpresion( char type, QString formula, short value
 string ProductionController::getFormula() const
 {
     return production->m_Formula;
+}
+
+void ProductionController::saveNewProduction(QString name, short type)
+{
+    production->m_Type = type;
+    production->m_NameCon = name.toStdString();
+    productions->Add(production);
 }
 
 string ProductionController::getName() const
@@ -40,14 +50,14 @@ void ProductionController::removeAllExpresions()
     production->m_ArrayExpression.RemoveAll();
 }
 
-void ProductionController::setFormula(string formula)
+void ProductionController::setFormula(QString formula)
 {
-    production->m_Formula = formula;
+    production->m_Formula = formula.toStdString();
 }
 
-void ProductionController::setName(string name)
+void ProductionController::setName(QString name)
 {
-    production->m_NameCon = name;
+    production->m_NameCon = name.toStdString();
 }
 
 void ProductionController::save()
@@ -55,7 +65,13 @@ void ProductionController::save()
     productions->Add(production);
 }
 
-void ProductionController::setType(BYTE type)
+void ProductionController::initView(ProductionDialog *window)
+{
+
+    connect(window, SIGNAL(importFile(QString)), this, SLOT(saveNewProduction(QString,short)));
+}
+
+void ProductionController::setType(short type)
 {
     production->m_Type = type;
 }

@@ -12,3 +12,9 @@ ProductionLogicDialog::~ProductionLogicDialog()
 {
     delete ui;
 }
+
+void ProductionLogicDialog::on_pushButton_8_clicked()
+{
+   this->close();
+
+}

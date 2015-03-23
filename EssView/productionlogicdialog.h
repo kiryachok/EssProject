@@ -15,6 +15,9 @@ public:
     explicit ProductionLogicDialog(QWidget *parent = 0);
     ~ProductionLogicDialog();
 
+private slots:
+    void on_pushButton_8_clicked();
+
 private:
     Ui::ProductionLogicDialog *ui;
 };

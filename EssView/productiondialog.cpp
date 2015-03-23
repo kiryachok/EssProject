@@ -9,7 +9,6 @@ ProductionDialog::ProductionDialog(QWidget *parent) :
     ui(new Ui::ProductionDialog)
 {
     ui->setupUi(this);
-    controller = new ProductionController();
 }
 
 ProductionDialog::~ProductionDialog()
@@ -20,27 +19,39 @@ ProductionDialog::~ProductionDialog()
 void ProductionDialog::on_new_logic_pushButton_clicked()
 {
     NewLogicalDialog *dialog = new NewLogicalDialog(this);
-    dialog->setController(controller);
-    dialog->show();
+    if (QDialog::Accepted == dialog->exec()){
+        emit addNewExpression();
+    }
+    delete dialog;
 }
 
 void ProductionDialog::on_new_string_pushButton_clicked()
 {
     NewStringProductionDialog *dialog = new NewStringProductionDialog(this);
-    dialog->setController(controller);
-    dialog->show();
+    if (QDialog::Accepted == dialog->exec()){
+        emit addNewExpression();
+    }
+    delete dialog;
 }
 
 void ProductionDialog::on_new_math_pushButton_clicked()
 {
     NewArithmeticDialog *dialog = new NewArithmeticDialog(this);
-    dialog->show();
+
+    if (QDialog::Accepted == dialog->exec()){
+        emit addNewExpression();
+    }
+    delete dialog;
 }
 
 
 void ProductionDialog::on_finish_pushButton_clicked()
 {
-    controller->setFormula("");
-    controller->setName("strategy");
-    controller->setType(1);
+   emit this->createNewProduction("strategy",1);
+   this->close();
+}
+
+void ProductionDialog::on_ok_pushButton_clicked()
+{
+   this->close();
 }

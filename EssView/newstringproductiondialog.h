@@ -14,7 +14,6 @@ class NewStringProductionDialog : public QDialog
 public:
     explicit NewStringProductionDialog(QWidget *parent = 0);
     ~NewStringProductionDialog();
-    void setController(ProductionController *cont);
 private slots:
     void on_pushButton_12_clicked();
 
@@ -34,9 +33,12 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_9_clicked();
+
 private:
     Ui::NewStringProductionDialog *ui;
-    ProductionController *controller;
 };
 
 #endif // NEWSTRINGPRODUCTIONDIALOG_H

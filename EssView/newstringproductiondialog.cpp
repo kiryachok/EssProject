@@ -13,10 +13,6 @@ NewStringProductionDialog::~NewStringProductionDialog()
     delete ui;
 }
 
-void NewStringProductionDialog::setController(ProductionController *cont)
-{
-    controller = cont;
-}
 
 void NewStringProductionDialog::on_pushButton_12_clicked()
 {
@@ -66,5 +62,15 @@ void NewStringProductionDialog::on_pushButton_5_clicked()
 
 void NewStringProductionDialog::on_pushButton_8_clicked()
 {
-    controller->addExpresion(2, ui->lineEdit, 0);
+    this->close();
+}
+
+void NewStringProductionDialog::on_pushButton_11_clicked()
+{
+    this->close();
+}
+
+void NewStringProductionDialog::on_pushButton_9_clicked()
+{
+    ui->lineEdit->setText("");
 }

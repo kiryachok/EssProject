@@ -2,6 +2,7 @@
 #define PRODUCTIONCONTROLLER_H
 
 #include "../EssModel/objects.h"
+#include "../EssView/productiondialog.h"
 
 class ProductionController : public QObject
 {
@@ -12,15 +13,17 @@ public:
 
     void addExpresion (char type, QString formula, short value);
     void removeAllExpresions();
-    void setFormula (string formula);
-    void setType (BYTE type);
-    void setName(string name);
+    void setFormula (QString formula);
+    void setType (short type);
+    void setName(QString name);
     void save();
-
+    void initView(ProductionDialog *window);
     string getName() const;
     BYTE getType() const;
     string getFormula() const;
 
+private slots:
+    void saveNewProduction(QString name, short type);
 
 private:
     CProduction *production;

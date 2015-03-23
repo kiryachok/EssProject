@@ -81,3 +81,16 @@ void MainWindow::on_action_productionRemove_triggered()
 {
     emit this->actionRemoveStrategy();
 }
+
+void MainWindow::on_action_24_triggered()
+{
+   ProductionDialog *prodDialog = new ProductionDialog(this);
+
+   prodDialog->show();
+}
+
+void MainWindow::on_action_25_triggered()
+{
+   ProductionDialog *prodDialog = new ProductionDialog(this);
+    prodDialog->show();
+}
